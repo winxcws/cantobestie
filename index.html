@@ -1226,6 +1226,33 @@ body.menu-open{ overflow:hidden; }
 .neon-board .nb-en{ font-family:var(--serif); font-style:italic; font-size:.8rem; color:rgba(244,238,223,.75); }
 .finale{ padding-bottom:clamp(4rem, 7vw, 6.5rem); }
 @media (prefers-reduced-motion: reduce){ .neon-board{ animation:none; } }
+
+/* ---------- free materials ---------- */
+.materials-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr)); gap:1.4rem; margin-top:2.2rem; }
+.material-card{
+  background:var(--paper-high); border:1px solid var(--line); border-radius:1rem; padding:1.7rem 1.5rem;
+  display:flex; flex-direction:column; gap:.55rem; transition:transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+}
+.material-card:hover{ transform:translateY(-4px); box-shadow:0 26px 54px -36px rgba(31,28,24,.35); }
+.material-tag{ font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--emerald); }
+.material-card .hk{ font-size:1.6rem; font-weight:600; }
+.material-card .hk small{ font-family:var(--mono); font-size:.55rem; letter-spacing:.1em; color:var(--ink-faint); font-weight:400; margin-left:.4rem; }
+.material-card h3{ font-family:var(--serif); font-size:1.1rem; font-weight:600; margin-top:-.2rem; }
+.material-card p{ color:var(--ink-soft); font-size:.9rem; flex:1; }
+.material-card .btn{ align-self:flex-start; margin-top:.3rem; }
+
+/* ---------- waitlist form ---------- */
+.waitlist-wrap{ display:flex; flex-direction:column; gap:.7rem; }
+.waitlist-form{ display:flex; flex-direction:column; gap:.7rem; }
+.waitlist-form input, .waitlist-form select{
+  width:100%; padding:.75rem 1rem; border:1px solid var(--line); border-radius:.6rem;
+  background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:.92rem; appearance:auto;
+}
+.waitlist-form input:focus, .waitlist-form select:focus{ outline:2px solid var(--emerald); outline-offset:1px; border-color:var(--emerald); }
+.waitlist-thanks{
+  background:rgba(11,93,87,.08); border:1px solid rgba(11,93,87,.25); border-radius:.6rem;
+  padding:1rem 1.1rem; font-size:.92rem; color:var(--ink); text-align:center;
+}
 </style>
 </head>
 <body>
@@ -1238,6 +1265,7 @@ body.menu-open{ overflow:hidden; }
   <a href="#method" data-sec="method"><span class="rr-dot"></span><span class="rr-tip">秘方 · Recipe</span></a>
   <a href="#journey" data-sec="journey"><span class="rr-dot"></span><span class="rr-tip">旅程 · Journey</span></a>
   <a href="#faq" data-sec="faq"><span class="rr-dot"></span><span class="rr-tip">常餐 · FAQ</span></a>
+  <a href="#materials" data-sec="materials"><span class="rr-dot"></span><span class="rr-tip">免費 · Free</span></a>
   <a href="#begin" data-sec="begin"><span class="rr-dot"></span><span class="rr-tip">開始 · Begin</span></a>
 </nav>
 
@@ -1257,6 +1285,7 @@ body.menu-open{ overflow:hidden; }
         <li><a href="#courses">Courses</a></li>
         <li><a href="#voices">Reviews</a></li>
         <li><a href="#method">Method</a></li>
+        <li><a href="#materials">Free Materials</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -1275,7 +1304,8 @@ body.menu-open{ overflow:hidden; }
   <a href="#voices" style="transition-delay:.24s">Reviews <span class="hk">食評</span></a>
   <a href="#method" style="transition-delay:.32s">Method <span class="hk">秘方</span></a>
   <a href="#faq" style="transition-delay:.4s">FAQ <span class="hk">常餐</span></a>
-  <a href="#" class="btn btn-ink mm-cta js-book" data-book="trial" style="transition-delay:.48s; justify-content:center;">Book a trial lesson</a>
+  <a href="#materials" style="transition-delay:.48s">Free Materials <span class="hk">免費</span></a>
+  <a href="#" class="btn btn-ink mm-cta js-book" data-book="trial" style="transition-delay:.56s; justify-content:center;">Book a trial lesson</a>
 </div>
 
 <!-- ================= HERO ================= -->
@@ -1533,8 +1563,27 @@ body.menu-open{ overflow:hidden; }
             <li>Practice quizzes</li>
             <li>Homework &amp; answer keys</li>
           </ul>
-          <div>
-            <a href="mailto:winxcws@gmail.com?subject=Self-Study%20Pack%20waitlist&body=Hi%20Wincy%2C%20please%20add%20me%20to%20the%20Self-Study%20Pack%20waitlist!" class="btn btn-ghost" style="width:100%; justify-content:center;">Join the waitlist</a>
+          <div class="waitlist-wrap">
+            <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="waitlist-form" id="waitlistForm">
+              <input type="hidden" name="form-name" value="waitlist">
+              <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+              <input type="text" name="name" placeholder="Your name" required>
+              <select name="level" required>
+                <option value="" disabled selected>Your level</option>
+                <option value="Total beginner">Total beginner</option>
+                <option value="Some basics">Some basics</option>
+                <option value="Intermediate+">Intermediate+</option>
+              </select>
+              <select name="contact_method" id="waitlistMethod" required>
+                <option value="" disabled selected>Best way to reach you</option>
+                <option value="Email">Email</option>
+                <option value="Instagram">Instagram DM</option>
+                <option value="WhatsApp">WhatsApp</option>
+              </select>
+              <input type="text" name="contact_detail" id="waitlistDetail" placeholder="Your email address" required>
+              <button type="submit" class="btn btn-ghost" style="width:100%; justify-content:center;">Join the waitlist</button>
+            </form>
+            <p class="waitlist-thanks" id="waitlistThanks" style="display:none;">Thanks — you're on the list! I'll reach out the moment it's ready 🎉</p>
           </div>
         </div>
       </article>
@@ -1863,6 +1912,26 @@ body.menu-open{ overflow:hidden; }
   </div>
 </section>
 
+<!-- ================= FREE MATERIALS ================= -->
+<section class="materials" id="materials">
+  <div class="container">
+    <div class="sect-head reveal">
+      <p class="eyebrow"><span class="st-dot" aria-hidden="true"></span><span class="st-code">07</span><span class="st-hk hk">免費</span> Free to take</p>
+      <h2 class="h-sect">Try before you<br><em>order.</em></h2>
+      <p class="lede">Real lessons, no booking required — pick whatever looks useful and start right now.</p>
+    </div>
+    <div class="materials-grid">
+      <div class="material-card reveal">
+        <span class="material-tag">Listening · Beginner</span>
+        <div class="hk">我嘅日常</div>
+        <h3>My Morning Routine</h3>
+        <p>An 18-line listening passage with full script, 14 vocabulary flip-cards, 3 grammar points, and a practice quiz.</p>
+        <a href="daily-routine-listening.html" class="btn btn-ghost" target="_blank" rel="noopener">Start <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FINALE ================= -->
 <section class="finale" id="begin">
   <div class="container">
@@ -2062,7 +2131,7 @@ body.menu-open{ overflow:hidden; }
         }
       });
     }, { rootMargin:"-42% 0px -52% 0px" });
-    ["story","voices","method","courses","journey","faq","begin"].forEach(function(id){
+    ["story","voices","method","courses","journey","faq","materials","begin"].forEach(function(id){
       var el = document.getElementById(id);
       if (el) secObs.observe(el);
     });
@@ -2092,6 +2161,32 @@ body.menu-open{ overflow:hidden; }
       requestAnimationFrame(spotLoop);
     };
   }
+  /* waitlist form: adaptive placeholder + Netlify AJAX submit */
+  var wlMethod = document.getElementById("waitlistMethod");
+  var wlDetail = document.getElementById("waitlistDetail");
+  if (wlMethod && wlDetail){
+    var wlPlaceholders = { Email:"Your email address", Instagram:"Your Instagram @handle", WhatsApp:"Your WhatsApp number" };
+    wlMethod.addEventListener("change", function(){
+      wlDetail.placeholder = wlPlaceholders[wlMethod.value] || "Your contact info";
+      wlDetail.type = wlMethod.value === "Email" ? "email" : "text";
+    });
+  }
+  var wlForm = document.getElementById("waitlistForm");
+  if (wlForm){
+    wlForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var body = new URLSearchParams(new FormData(wlForm)).toString();
+      fetch("/", { method:"POST", headers:{ "Content-Type":"application/x-www-form-urlencoded" }, body:body })
+        .then(function(){ showWaitlistThanks(); })
+        .catch(function(){ showWaitlistThanks(); });
+    });
+  }
+  function showWaitlistThanks(){
+    wlForm.style.display = "none";
+    var thanks = document.getElementById("waitlistThanks");
+    if (thanks) thanks.style.display = "block";
+  }
+
   /* intro video: click-to-play Vimeo embed */
   var vf = document.getElementById("videoFrame");
   if (vf){

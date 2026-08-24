@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Morning Routine — cantobestie · Cantonese Listening Practice</title>
+<style>
+  :root{
+    --cream:#FFF8F0;
+    --ink:#2D2A26;
+    --ink-soft:#6B6560;
+    --coral:#E85D4C;
+    --coral-soft:#FDEBE8;
+    --teal:#0E8A7B;
+    --teal-soft:#E3F4F1;
+    --amber:#E09112;
+    --amber-soft:#FCF1DC;
+    --purple:#7C5CBF;
+    --purple-soft:#F0EAFB;
+    --card:#FFFFFF;
+    --radius:18px;
+    --shadow:0 4px 14px rgba(45,42,38,.08);
+    --shadow-hover:0 8px 24px rgba(45,42,38,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Avenir Next','Segoe UI','Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+  }
+  .zh{font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei','Heiti TC',sans-serif;}
+  .jp{color:var(--ink-soft);font-style:italic;font-size:.9em;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 80px;}
+
+  .hero{text-align:center;padding:56px 20px 40px;position:relative;overflow:hidden;}
+  .hero .big-char{
+    font-size:clamp(56px,11vw,92px);font-weight:900;line-height:1.05;
+    background:linear-gradient(135deg,var(--coral),var(--amber));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    display:inline-block;animation:pop .7s cubic-bezier(.2,1.6,.4,1);
+  }
+  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+  .hero .romanized{font-size:clamp(16px,3vw,20px);color:var(--teal);font-weight:700;letter-spacing:.1em;margin-top:4px;}
+  .hero h1{font-size:clamp(22px,4.5vw,32px);margin-top:14px;font-weight:800;}
+  .hero p.sub{color:var(--ink-soft);margin-top:8px;font-size:17px;max-width:560px;margin-left:auto;margin-right:auto;}
+  .brand{display:inline-block;font-weight:900;letter-spacing:.05em;font-size:16px;background:var(--card);border:2px solid var(--coral-soft);border-radius:999px;padding:7px 20px;box-shadow:var(--shadow);margin-bottom:20px;}
+  .brand .canto{color:var(--teal);}
+  .brand .bestie{color:var(--coral);}
+  footer .brand-line{margin-top:12px;font-size:15px;font-weight:800;color:var(--ink);}
+  footer .brand-line .canto{color:var(--teal);}
+  footer .brand-line .bestie{color:var(--coral);}
+  .confetti{position:absolute;font-size:26px;opacity:.55;animation:floaty 5s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(6deg)}}
+
+  section{margin-top:56px;}
+  .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:12px;}
+  h2{font-size:clamp(22px,4vw,28px);font-weight:800;margin-bottom:6px;}
+  .section-sub{color:var(--ink-soft);margin-bottom:22px;max-width:660px;}
+  h3.sub-head{font-size:16px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px;}
+  h3.sub-head:first-child{margin-top:0;}
+
+  .ex-row{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;}
+  .ex-row .zh{font-size:20px;font-weight:700;}
+  .ex-row .en{color:var(--ink);font-size:15px;}
+  .ex-row .en::before{content:"→ ";color:var(--ink-soft);}
+  .ex-row .num{font-family:'Avenir Next',sans-serif;font-weight:800;color:var(--coral);font-size:14px;background:var(--coral-soft);border-radius:999px;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+  .hint{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:16px;background:var(--teal-soft);display:table;margin-left:auto;margin-right:auto;padding:6px 16px;border-radius:999px;}
+  .verb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;}
+  .flip{perspective:900px;cursor:pointer;height:210px;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.1,.2,1);transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center;}
+  .flip-front{background:var(--card);border-bottom:5px solid var(--teal);}
+  .flip-front .emoji{font-size:38px;margin-bottom:6px;}
+  .flip-front .zh{font-size:24px;font-weight:800;}
+  .flip-front .jp{margin:2px 0 4px;}
+  .flip-front .en{font-size:14px;font-weight:700;color:var(--teal);}
+  .flip-back{background:var(--teal);color:#fff;transform:rotateY(180deg);}
+  .flip-back .zh{font-size:16px;font-weight:800;line-height:1.4;}
+  .flip-back .jp{color:rgba(255,255,255,.85);margin:6px 0;font-size:12px;}
+  .flip-back .en{font-size:13px;}
+
+  .formula{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin:18px 0 8px;}
+  .chip{font-size:clamp(16px,3vw,21px);font-weight:800;padding:10px 20px;border-radius:14px;}
+  .chip.verb{background:#EFEBE6;color:var(--ink);}
+  .chip.mark{color:#fff;}
+  .chip.plain{background:transparent;padding:0;color:var(--ink-soft);font-weight:700;}
+  .formula-meaning{text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:20px;}
+  .formula-meaning b{color:var(--ink);}
+  .g1 .kicker{background:var(--teal-soft);color:var(--teal);} .g1 .chip.mark{background:var(--teal);}
+  .g2 .kicker{background:var(--coral-soft);color:var(--coral);} .g2 .chip.mark{background:var(--coral);}
+  .g3 .kicker{background:var(--amber-soft);color:var(--amber);} .g3 .chip.mark{background:var(--amber);}
+
+  .callout{margin-top:22px;background:var(--purple-soft);border-left:6px solid var(--purple);border-radius:0 var(--radius) var(--radius) 0;padding:20px 22px;}
+  .callout h4{color:var(--purple);font-size:17px;margin-bottom:6px;}
+  .callout p{font-size:15px;color:var(--ink);}
+  .callout .mini-ex{margin-top:12px;}
+  .callout .mini-ex div{margin-bottom:8px;font-size:15px;}
+  .callout .mini-ex .zh{font-weight:700;font-size:17px;}
+
+  .map{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 22px;}
+  .map-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+  @media(max-width:760px){.map-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.map-grid{grid-template-columns:1fr;}}
+  .map-card{border-radius:14px;padding:16px 12px;text-align:center;}
+  .map-card .pat{font-size:19px;font-weight:800;}
+  .map-card .mean{font-size:13px;margin-top:6px;color:var(--ink-soft);}
+  .map-card.c1{background:var(--coral-soft);} .map-card.c1 .pat{color:var(--coral);}
+  .map-card.c2{background:var(--amber-soft);} .map-card.c2 .pat{color:var(--amber);}
+  .map-card.c3{background:var(--teal-soft);} .map-card.c3 .pat{color:var(--teal);}
+  .map-card.c4{background:var(--purple-soft);} .map-card.c4 .pat{color:var(--purple);}
+
+  .quiz-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px;}
+  .quiz-card .qnum{display:inline-block;background:var(--ink);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:3px 12px;margin-bottom:10px;}
+  .quiz-card .qtext{font-size:17px;font-weight:700;margin-bottom:14px;}
+  .quiz-card .qtext .zh{font-size:19px;}
+  .opts{display:grid;gap:10px;}
+  .opt{text-align:left;font-size:16px;font-family:inherit;background:var(--cream);border:2px solid #EDE5DB;border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .15s;color:var(--ink);}
+  .opt:hover:not(:disabled){border-color:var(--teal);background:var(--teal-soft);}
+  .opt:disabled{cursor:default;opacity:.75;}
+  .opt.correct{background:var(--teal-soft);border-color:var(--teal);opacity:1;font-weight:700;}
+  .opt.wrong{background:var(--coral-soft);border-color:var(--coral);opacity:1;}
+  .feedback{display:none;margin-top:14px;border-radius:12px;padding:12px 16px;font-size:14.5px;}
+  .feedback.show{display:block;animation:fadein .3s;}
+  .feedback.good{background:var(--teal-soft);border-left:5px solid var(--teal);}
+  .feedback.bad{background:var(--coral-soft);border-left:5px solid var(--coral);}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .score-bar{position:sticky;bottom:14px;z-index:5;pointer-events:none;background:var(--ink);color:#fff;border-radius:999px;padding:10px 22px;display:table;margin:20px auto 0;font-weight:700;font-size:15px;box-shadow:var(--shadow-hover);}
+  .final-msg{display:none;text-align:center;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border-radius:var(--radius);padding:28px 22px;margin-top:20px;}
+  .final-msg.show{display:block;animation:fadein .4s;}
+  .final-msg .big{font-size:34px;font-weight:900;}
+  .reset-btn{margin-top:14px;background:#fff;color:var(--ink);border:none;border-radius:999px;padding:10px 22px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:60px;}
+  footer .zh{font-size:22px;font-weight:800;color:var(--ink);}
+
+  .answer-key{display:none;}
+
+  @media print{
+    body{background:#fff;}
+    .confetti, .hint, .score-bar, .final-msg, .reset-btn{display:none !important;}
+    section{margin-top:26px;}
+    .ex-row, .quiz-card, .flip, .callout, .map, .job-card{break-inside:avoid;}
+
+    /* unfold flip cards so front + back both print, no click needed */
+    .flip{height:auto !important; cursor:default;}
+    .flip-inner{position:static !important; transform:none !important;}
+    .flip-face{position:static !important; box-shadow:none; backface-visibility:visible !important; padding:10px 14px;}
+    .flip-front{border-radius:16px 16px 0 0; border-bottom:none;}
+    .flip-back{border-radius:0 0 16px 16px; transform:none !important;}
+
+    /* keep the quiz a blank worksheet in print — no answers revealed inline */
+    .opt{break-inside:avoid;}
+
+    /* print-only answer key at the very end */
+    .answer-key{display:block !important; margin-top:56px; break-before:page;}
+    .answer-key h2{margin-bottom:4px;}
+    .answer-key ol{margin:16px 0 0 20px;}
+    .answer-key li{margin-bottom:12px; font-size:14px;}
+    .answer-key li b{color:var(--teal);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="confetti" style="left:8%;top:18%;">☕</span>
+    <span class="confetti" style="right:10%;top:14%;animation-delay:1.2s;">🐶</span>
+    <span class="confetti" style="left:16%;bottom:8%;animation-delay:.6s;">🛏️</span>
+    <span class="confetti" style="right:18%;bottom:12%;animation-delay:1.8s;">🧘‍♀️</span>
+    <div><span class="brand"><span class="canto">canto</span><span class="bestie">bestie</span></span></div>
+    <div class="big-char zh">我嘅日常</div>
+    <div class="romanized">ngo5 ge3 jat6 soeng4</div>
+    <h1>My Morning Routine — a beginner listening passage</h1>
+    <p class="sub">Listen sentence by sentence, learn the key words, then practice the grammar that ties it all together — 會, verb+下, and how Cantonese sequences a routine.</p>
+  </header>
+
+  <!-- ================= THE SCRIPT ================= -->
+  <section>
+    <span class="kicker" style="background:var(--teal-soft);color:var(--teal);">Part 1</span>
+    <h2>The script, one sentence at a time 🎧</h2>
+    <p class="section-sub">Play the audio and pause after each line. Read along, then try covering the English and see if you follow along by ear alone.</p>
+
+    <h3 class="sub-head">🛏️ Waking up</h3>
+    <div class="ex-row"><span class="num">1</span><span class="zh">早晨我平時會八點起身。</span><span class="jp">zou2 san4 ngo5 ping4 si4 wui5 baat3 dim2 hei2 san1.</span><span class="en">In the morning, I usually get up at 8 o'clock.</span></div>
+    <div class="ex-row"><span class="num">2</span><span class="zh">一起身我會執好張床。</span><span class="jp">jat1 hei2 san1 ngo5 wui5 zap1 hou2 zoeng1 cong4.</span><span class="en">As soon as I get up, I make the bed.</span></div>
+    <div class="ex-row"><span class="num">3</span><span class="zh">然後會沖涼、刷牙。</span><span class="jp">jin4 hau6 wui5 cung1 loeng4, caat3 ngaa4.</span><span class="en">Then I shower and brush my teeth.</span></div>
+
+    <h3 class="sub-head">☕ Coffee time</h3>
+    <div class="ex-row"><span class="num">4</span><span class="zh">之後沖咖啡。</span><span class="jp">zi1 hau6 cung1 gaa3 fe1.</span><span class="en">After that, I make coffee.</span></div>
+    <div class="ex-row"><span class="num">5</span><span class="zh">我好鍾意自己沖咖啡，因為好香同埋好提神。</span><span class="jp">ngo5 hou2 zung1 ji3 zi6 gei2 cung1 gaa3 fe1, jan1 wai6 hou2 hoeng1 tung4 maai4 hou2 tai4 san4.</span><span class="en">I really like making my own coffee, because it's fragrant and refreshing.</span></div>
+    <div class="ex-row"><span class="num">6</span><span class="zh">聽下啲ASMR，勁爽。</span><span class="jp">teng1 haa5 di1 ASMR, ging6 song2.</span><span class="en">I listen to a bit of ASMR — so satisfying.</span></div>
+    <div class="ex-row"><span class="num">7</span><span class="zh">我一個星期會上一至兩次嘅韓文堂。</span><span class="jp">ngo5 jat1 go3 sing1 kei4 wui5 soeng5 jat1 zi3 loeng5 ci3 ge3 hon4 man4 tong4.</span><span class="en">I take Korean class once or twice a week.</span></div>
+    <div class="ex-row"><span class="num">8</span><span class="zh">你哋一個星期又上幾多堂廣東話呢？</span><span class="jp">nei5 dei6 jat1 go3 sing1 kei4 jau6 soeng5 gei2 do1 tong4 gwong2 dung1 waa2 ne1?</span><span class="en">How many Cantonese classes do you all take a week?</span></div>
+
+    <h3 class="sub-head">🍳 Breakfast</h3>
+    <div class="ex-row"><span class="num">9</span><span class="zh">有時我會整下早餐。</span><span class="jp">jau5 si4 ngo5 wui5 zing2 haa5 zou2 caan1.</span><span class="en">Sometimes I make breakfast.</span></div>
+    <div class="ex-row"><span class="num">10</span><span class="zh">首先我會加啲cream cheese。</span><span class="jp">sau2 sin1 ngo5 wui5 gaa1 di1 cream cheese.</span><span class="en">First I add some cream cheese.</span></div>
+    <div class="ex-row"><span class="num">11</span><span class="zh">然後會加啲三文魚。</span><span class="jp">jin4 hau6 wui5 gaa1 di1 saam1 man4 jyu2.</span><span class="en">Then I add some salmon.</span></div>
+    <div class="ex-row"><span class="num">12</span><span class="zh">再唧啲檸檬汁。</span><span class="jp">zoi3 zik1 di1 ning4 mung1 zap1.</span><span class="en">Then squeeze some lemon juice.</span></div>
+    <div class="ex-row"><span class="num">13</span><span class="zh">好味，正！</span><span class="jp">hou2 mei6, zeng3!</span><span class="en">Delicious, awesome!</span></div>
+
+    <h3 class="sub-head">🧹 Chores &amp; the dog</h3>
+    <div class="ex-row"><span class="num">14</span><span class="zh">之後我會吸塵同埋執屋。</span><span class="jp">zi1 hau6 ngo5 wui5 kap1 can4 tung4 maai4 zap1 uk1.</span><span class="en">After that I vacuum and tidy the house.</span></div>
+    <div class="ex-row"><span class="num">15</span><span class="zh">然後我會幫隻狗仔梳毛。</span><span class="jp">jin4 hau6 ngo5 wui5 bong1 zek3 gau2 zai2 so1 mou4.</span><span class="en">Then I brush my dog's fur.</span></div>
+    <div class="ex-row"><span class="num">16</span><span class="zh">但係佢好憎梳毛，會成日周圍郁，所以要同佢按摩下。</span><span class="jp">daan6 hai6 keoi5 hou2 zang6 so1 mou4, wui5 seng4 jat6 zau1 wai4 juk1, so2 ji5 jiu3 tung4 keoi5 on3 mo1 haa5.</span><span class="en">But he hates having his fur brushed — he keeps moving around, so I have to give him a little massage.</span></div>
+
+    <h3 class="sub-head">🧘‍♀️ Exercise &amp; heading out</h3>
+    <div class="ex-row"><span class="num">17</span><span class="zh">然後我通常日日會做半個鐘嘅普拉提。</span><span class="jp">jin4 hau6 ngo5 tung1 soeng4 jat6 jat6 wui5 zou6 bun3 go3 zung1 ge3 pou2 laai1 tai4.</span><span class="en">Then I usually do half an hour of Pilates every day.</span></div>
+    <div class="ex-row"><span class="num">18</span><span class="zh">跟住準備換衫出街走人，完。</span><span class="jp">gan1 zyu6 zeon2 bei6 wun6 saam1 ceot1 gaai1 zau2 jan4, jyun4.</span><span class="en">Then I get ready, change clothes, and head out. The end.</span></div>
+  </section>
+
+  <!-- ================= VOCABULARY ================= -->
+  <section>
+    <span class="kicker" style="background:var(--coral-soft);color:var(--coral);">Part 2</span>
+    <h2>Key vocabulary 🗂️</h2>
+    <p class="section-sub">The words worth learning from this passage — tap a card to flip it and see it used in the sentence it came from.</p>
+    <p class="hint">👆 Tap a card to flip it!</p>
+    <div class="verb-grid">
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: hei2 san1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">⏰</div><div class="zh">起身</div><div class="jp">hei2 san1</div><div class="en">to get up / wake up</div></div>
+        <div class="flip-face flip-back"><div class="zh">我平時八點起身。</div><div class="jp">ngo5 ping4 si4 baat3 dim2 hei2 san1.</div><div class="en">I usually get up at 8.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: zap1 hou2"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🛏️</div><div class="zh">執好</div><div class="jp">zap1 hou2</div><div class="en">to tidy up, sort out</div></div>
+        <div class="flip-face flip-back"><div class="zh">執好張床。</div><div class="jp">zap1 hou2 zoeng1 cong4.</div><div class="en">Make (tidy up) the bed.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: cung1 loeng4"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🚿</div><div class="zh">沖涼</div><div class="jp">cung1 loeng4</div><div class="en">to take a shower</div></div>
+        <div class="flip-face flip-back"><div class="zh">我返屋企先沖涼。</div><div class="jp">ngo5 faan1 uk1 kei2 sin1 cung1 loeng4.</div><div class="en">I'll shower after I get home.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: zung1 ji3"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">💛</div><div class="zh">鍾意</div><div class="jp">zung1 ji3</div><div class="en">to like</div></div>
+        <div class="flip-face flip-back"><div class="zh">我好鍾意自己沖咖啡。</div><div class="jp">ngo5 hou2 zung1 ji3 zi6 gei2 cung1 gaa3 fe1.</div><div class="en">I really like making my own coffee.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: tai4 san4"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">⚡</div><div class="zh">提神</div><div class="jp">tai4 san4</div><div class="en">refreshing, energizing</div></div>
+        <div class="flip-face flip-back"><div class="zh">咖啡好提神。</div><div class="jp">gaa3 fe1 hou2 tai4 san4.</div><div class="en">Coffee is very refreshing.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: zing2"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🍳</div><div class="zh">整</div><div class="jp">zing2</div><div class="en">to make (food)</div></div>
+        <div class="flip-face flip-back"><div class="zh">我會整下早餐。</div><div class="jp">ngo5 wui5 zing2 haa5 zou2 caan1.</div><div class="en">I'll make some breakfast.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: zik1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🍋</div><div class="zh">唧</div><div class="jp">zik1</div><div class="en">to squeeze</div></div>
+        <div class="flip-face flip-back"><div class="zh">唧啲檸檬汁。</div><div class="jp">zik1 di1 ning4 mung1 zap1.</div><div class="en">Squeeze some lemon juice.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: kap1 can4"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🧹</div><div class="zh">吸塵</div><div class="jp">kap1 can4</div><div class="en">to vacuum</div></div>
+        <div class="flip-face flip-back"><div class="zh">我會吸塵同埋執屋。</div><div class="jp">ngo5 wui5 kap1 can4 tung4 maai4 zap1 uk1.</div><div class="en">I vacuum and tidy the house.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: zap1 uk1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🏠</div><div class="zh">執屋</div><div class="jp">zap1 uk1</div><div class="en">to tidy the house</div></div>
+        <div class="flip-face flip-back"><div class="zh">星期六我會執屋。</div><div class="jp">sing1 kei4 luk6 ngo5 wui5 zap1 uk1.</div><div class="en">I tidy the house on Saturdays.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: so1 mou4"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🐶</div><div class="zh">梳毛</div><div class="jp">so1 mou4</div><div class="en">to brush (fur)</div></div>
+        <div class="flip-face flip-back"><div class="zh">幫隻狗仔梳毛。</div><div class="jp">bong1 zek3 gau2 zai2 so1 mou4.</div><div class="en">Brush the dog's fur.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: zang6"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">😒</div><div class="zh">憎</div><div class="jp">zang6</div><div class="en">to hate, detest</div></div>
+        <div class="flip-face flip-back"><div class="zh">佢好憎梳毛。</div><div class="jp">keoi5 hou2 zang6 so1 mou4.</div><div class="en">He hates having his fur brushed.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: juk1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🌀</div><div class="zh">郁</div><div class="jp">juk1</div><div class="en">to move</div></div>
+        <div class="flip-face flip-back"><div class="zh">佢會成日周圍郁。</div><div class="jp">keoi5 wui5 seng4 jat6 zau1 wai4 juk1.</div><div class="en">He keeps moving around all the time.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: on3 mo1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">💆</div><div class="zh">按摩</div><div class="jp">on3 mo1</div><div class="en">to massage</div></div>
+        <div class="flip-face flip-back"><div class="zh">同佢按摩下。</div><div class="jp">tung4 keoi5 on3 mo1 haa5.</div><div class="en">Give him a little massage.</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: ceot1 gaai1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🚶</div><div class="zh">出街</div><div class="jp">ceot1 gaai1</div><div class="en">to go out</div></div>
+        <div class="flip-face flip-back"><div class="zh">準備換衫出街。</div><div class="jp">zeon2 bei6 wun6 saam1 ceot1 gaai1.</div><div class="en">Get ready and head out.</div></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ================= GRAMMAR 1: 會 ================= -->
+  <section class="g1">
+    <span class="kicker">Part 3 · Grammar</span>
+    <h2>會 = talking about your habits &amp; routines 🔁</h2>
+    <p class="section-sub">Here 會 isn't really "will" in the future-tense sense — it describes what someone <b>usually / regularly does</b>. It shows up almost every sentence in this passage.</p>
+    <div class="formula">
+      <span class="chip verb zh">(Time word)</span>
+      <span class="chip plain">+</span>
+      <span class="chip mark zh">會</span>
+      <span class="chip plain">+</span>
+      <span class="chip verb zh">Verb</span>
+    </div>
+    <p class="formula-meaning">= <b>usually/regularly</b> do something — a routine, not a one-time future plan</p>
+    <div class="ex-row"><span class="zh">我平時<b>會</b>八點起身。</span><span class="jp">ngo5 ping4 si4 wui5 baat3 dim2 hei2 san1.</span><span class="en">I usually get up at 8.</span></div>
+    <div class="ex-row"><span class="zh">我一個星期<b>會</b>上一至兩次韓文堂。</span><span class="jp">ngo5 jat1 go3 sing1 kei4 wui5 soeng5 jat1 zi3 loeng5 ci3 hon4 man4 tong4.</span><span class="en">I take Korean class 1–2 times a week.</span></div>
+    <div class="ex-row"><span class="zh">我通常日日<b>會</b>做半個鐘普拉提。</span><span class="jp">ngo5 tung1 soeng4 jat6 jat6 wui5 zou6 bun3 go3 zung1 pou2 laai1 tai4.</span><span class="en">I usually do 30 minutes of Pilates every day.</span></div>
+    <div class="callout">
+      <h4>💡 Notice the pattern</h4>
+      <p>Words like 平時 (ping4 si4, "usually"), 有時 (jau5 si4, "sometimes"), 通常 (tung1 soeng4, "usually"), and 日日 (jat6 jat6, "every day") team up with 會 to describe routines. Take one away and the sentence still works — but together, they're how Cantonese says "this is just what I do."</p>
+    </div>
+  </section>
+
+  <!-- ================= GRAMMAR 2: Verb + 下 ================= -->
+  <section class="g2">
+    <span class="kicker">Part 3 · Grammar</span>
+    <h2>Verb + 下 (haa5) = "a little bit / for a while" ☺️</h2>
+    <p class="section-sub">Adding 下 right after a verb softens it — it turns "do X" into "do a bit of X" or "do X for a while." It makes an action sound casual and relaxed, not a big deal.</p>
+    <div class="formula">
+      <span class="chip verb zh">Verb</span>
+      <span class="chip plain">+</span>
+      <span class="chip mark zh">下</span>
+    </div>
+    <p class="formula-meaning">= do a bit of… / do… for a while</p>
+    <div class="ex-row"><span class="zh">聽<b>下</b>啲ASMR。</span><span class="jp">teng1 haa5 di1 ASMR.</span><span class="en">Listen to a bit of ASMR.</span></div>
+    <div class="ex-row"><span class="zh">我會整<b>下</b>早餐。</span><span class="jp">ngo5 wui5 zing2 haa5 zou2 caan1.</span><span class="en">I'll whip up some breakfast.</span></div>
+    <div class="ex-row"><span class="zh">同佢按摩<b>下</b>。</span><span class="jp">tung4 keoi5 on3 mo1 haa5.</span><span class="en">Give him a little massage.</span></div>
+    <div class="callout">
+      <h4>💡 Compare with and without 下</h4>
+      <div class="mini-ex">
+        <div><span class="zh">整早餐。</span> zing2 zou2 caan1 → Make breakfast. <i>(plain, neutral)</i></div>
+        <div><span class="zh">整下早餐。</span> zing2 haa5 zou2 caan1 → Whip up a bit of breakfast. <i>(casual, no big deal)</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GRAMMAR 3: sequencing ================= -->
+  <section class="g3">
+    <span class="kicker">Part 3 · Grammar</span>
+    <h2>首先…然後…之後…跟住 — telling a story in order 🗺️</h2>
+    <p class="section-sub">This whole passage is just one routine told step by step. These four words are the glue that connects each step to the next — learn them as a set.</p>
+    <div class="map">
+      <div class="map-grid">
+        <div class="map-card c1"><div class="pat zh">首先</div><div class="jp">sau2 sin1</div><div class="mean">first</div></div>
+        <div class="map-card c2"><div class="pat zh">然後</div><div class="jp">jin4 hau6</div><div class="mean">then</div></div>
+        <div class="map-card c3"><div class="pat zh">之後</div><div class="jp">zi1 hau6</div><div class="mean">after that</div></div>
+        <div class="map-card c4"><div class="pat zh">跟住</div><div class="jp">gan1 zyu6</div><div class="mean">next, following that</div></div>
+      </div>
+    </div>
+    <p class="section-sub" style="margin-top:16px;">In practice, 然後 and 之後 are used fairly interchangeably to mean "then / after that" — Cantonese speakers move between them freely, the way English speakers mix up "then" and "after that."</p>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section id="quiz-section">
+    <span class="kicker" style="background:var(--coral-soft);color:var(--coral);">Part 4</span>
+    <h2>Practice time 🎯</h2>
+    <p class="section-sub">Nine quick questions covering the script, the vocabulary, and the grammar above. Tap an answer for instant feedback. 加油 (gaa1 jau4)!</p>
+    <div id="quiz"></div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 0 answered</div>
+    <div class="final-msg" id="finalMsg">
+      <div class="big" id="finalScore"></div>
+      <div id="finalWords" style="margin-top:6px;font-size:17px;"></div>
+      <button class="reset-btn" onclick="resetQuiz()">🔄 Try again</button>
+    </div>
+  </section>
+
+  <section class="answer-key">
+    <span class="kicker" style="background:var(--ink);color:#fff;">For the teacher</span>
+    <h2>Answer key</h2>
+    <p class="section-sub">Printed separately from the worksheet above so students don't see it by accident.</p>
+    <ol id="answerKeyList"></ol>
+  </section>
+
+  <footer>
+    <div class="zh">加油呀！(gaa1 jau4 aa3!) — Keep going!</div>
+    <p style="margin-top:6px;">Listen to the passage once more, this time without reading — see how much you catch 💪</p>
+    <p class="brand-line">made with ❤️ by <span class="canto">canto</span><span class="bestie">bestie</span></p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.flip').forEach(function(card){
+    card.addEventListener('click', function(){ card.classList.toggle('flipped'); });
+    card.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); card.classList.toggle('flipped'); }
+    });
+  });
+
+  var QUESTIONS = [
+    {
+      q:'What time does she usually get up?',
+      opts:['7 o’clock (七點, cat1 dim2)','8 o’clock (八點, baat3 dim2)','9 o’clock (九點, gau2 dim2)'],
+      correct:1,
+      why:'早晨我平時會八點起身 — "In the morning I usually get up at 8 o’clock."'
+    },
+    {
+      q:'Fill in the blank: 我平時___八點起身。 (talking about a daily habit)',
+      opts:['會 (wui5)','咗 (zo2)','緊 (gan2)'],
+      correct:0,
+      why:'會 + Verb describes a routine/habit — not "咗" (completed action) or "緊" (happening right now).'
+    },
+    {
+      q:'沖涼 (cung1 loeng4) means:',
+      opts:['to make coffee','to take a shower','to brush your teeth'],
+      correct:1,
+      why:'沖涼 = take a shower. (刷牙 caat3 ngaa4 is "brush your teeth", 沖咖啡 is "make coffee".)'
+    },
+    {
+      q:'Besides cream cheese, what else does she add to her breakfast?',
+      opts:['Salmon (三文魚, saam1 man4 jyu2)','Avocado (牛油果, ngau4 jau4 gwo2)','Ham (火腿, fo2 teoi2)'],
+      correct:0,
+      why:'然後會加啲三文魚 — "Then I add some salmon" — followed by a squeeze of lemon juice.'
+    },
+    {
+      q:'聽下啲ASMR — what job is 下 doing here?',
+      opts:['It makes the sentence past tense','It softens the verb: "listen to a bit of…"','It turns the verb into a question'],
+      correct:1,
+      why:'Verb + 下 = do a little bit of / do for a while. It makes the action sound casual, not a big deal.'
+    },
+    {
+      q:'Why does she give the dog a massage?',
+      opts:['He is sick', 'He hates being brushed and won’t hold still', 'It’s his birthday'],
+      correct:1,
+      why:'但係佢好憎梳毛，會成日周圍郁，所以要同佢按摩下 — he hates having his fur brushed and keeps moving, so she massages him (to calm him down).'
+    },
+    {
+      q:'執屋 (zap1 uk1) means:',
+      opts:['to cook dinner','to tidy the house','to walk the dog'],
+      correct:1,
+      why:'執屋 = tidy up the house. (執好 zap1 hou2 earlier in the passage was used for making the bed.)'
+    },
+    {
+      q:'How long does she do Pilates for?',
+      opts:['15 minutes (十五分鐘, sap6 ng5 fan1 zung1)','Half an hour (半個鐘, bun3 go3 zung1)','One hour (一個鐘, jat1 go3 zung1)'],
+      correct:1,
+      why:'我通常日日會做半個鐘嘅普拉提 — "I usually do half an hour of Pilates every day."'
+    },
+    {
+      q:'Which pair of words both mean roughly "then / after that" in this passage?',
+      opts:['首先 (sau2 sin1) and 跟住 (gan1 zyu6)','然後 (jin4 hau6) and 之後 (zi1 hau6)','會 (wui5) and 下 (haa5)'],
+      correct:1,
+      why:'然後 (jin4 hau6) and 之後 (zi1 hau6) are used almost interchangeably for "then / after that." 首先 = "first", 跟住 = "next."'
+    }
+  ];
+
+  var answered = 0, score = 0;
+  var quizEl = document.getElementById('quiz');
+
+  function buildQuiz(){
+    answered = 0; score = 0;
+    quizEl.innerHTML = '';
+    QUESTIONS.forEach(function(item, qi){
+      var card = document.createElement('div');
+      card.className = 'quiz-card';
+      var optsHtml = item.opts.map(function(o, oi){
+        return '<button class="opt zh" data-q="'+qi+'" data-o="'+oi+'">'+o+'</button>';
+      }).join('');
+      card.innerHTML =
+        '<span class="qnum">Question '+(qi+1)+' of '+QUESTIONS.length+'</span>' +
+        '<div class="qtext">'+item.q+'</div>' +
+        '<div class="opts">'+optsHtml+'</div>' +
+        '<div class="feedback" id="fb-'+qi+'"></div>';
+      quizEl.appendChild(card);
+    });
+    quizEl.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click', onAnswer);
+    });
+    updateScore();
+    document.getElementById('finalMsg').classList.remove('show');
+  }
+
+  function onAnswer(e){
+    var btn = e.currentTarget;
+    var qi = +btn.dataset.q, oi = +btn.dataset.o;
+    var item = QUESTIONS[qi];
+    var card = btn.closest('.quiz-card');
+    var buttons = card.querySelectorAll('.opt');
+    buttons.forEach(function(b){ b.disabled = true; });
+    var fb = document.getElementById('fb-'+qi);
+    if(oi === item.correct){
+      btn.classList.add('correct');
+      score++;
+      fb.className = 'feedback good show';
+      fb.innerHTML = '✅ <b>啱喇! (ngaam1 laa3!) Correct!</b> ' + item.why;
+    } else {
+      btn.classList.add('wrong');
+      buttons[item.correct].classList.add('correct');
+      fb.className = 'feedback bad show';
+      fb.innerHTML = '❌ <b>Not quite!</b> ' + item.why;
+    }
+    answered++;
+    updateScore();
+    if(answered === QUESTIONS.length) showFinal();
+  }
+
+  function updateScore(){
+    document.getElementById('scoreBar').textContent =
+      'Score: ' + score + ' / ' + answered + ' answered';
+  }
+
+  function showFinal(){
+    var msg = document.getElementById('finalMsg');
+    document.getElementById('finalScore').textContent = score + ' / ' + QUESTIONS.length;
+    var words;
+    if(score === QUESTIONS.length){ words = '🏆 好犀利呀! (hou2 sai1 lei6 aa3!) Perfect listening!'; }
+    else if(score >= 7){ words = '🎉 好叻呀! (hou2 lek1 aa3!) Great job — just review the ones you missed.'; }
+    else if(score >= 4){ words = '💪 唔錯! (m4 co3!) Good start — listen again and try once more!'; }
+    else { words = '📖 唔緊要! (m4 gan2 jiu3!) No worries — review the script and vocabulary, then try again!'; }
+    document.getElementById('finalWords').textContent = words;
+    msg.classList.add('show');
+    msg.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function resetQuiz(){
+    buildQuiz();
+    document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
+  }
+
+  function buildAnswerKey(){
+    var list = document.getElementById('answerKeyList');
+    list.innerHTML = QUESTIONS.map(function(item){
+      return '<li><b>' + item.opts[item.correct] + '</b> — ' + item.why + '</li>';
+    }).join('');
+  }
+
+  buildQuiz();
+  buildAnswerKey();
+</script>
+</body>
+</html>
