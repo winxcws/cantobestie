@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6 Things 食 Really Means — cantobestie · Cantonese Slang Guide</title>
+<style>
+  :root{
+    --cream:#FFF8F0;
+    --ink:#2D2A26;
+    --ink-soft:#6B6560;
+    --coral:#E85D4C;
+    --coral-soft:#FDEBE8;
+    --teal:#0E8A7B;
+    --teal-soft:#E3F4F1;
+    --amber:#E09112;
+    --amber-soft:#FCF1DC;
+    --purple:#7C5CBF;
+    --purple-soft:#F0EAFB;
+    --card:#FFFFFF;
+    --radius:18px;
+    --shadow:0 4px 14px rgba(45,42,38,.08);
+    --shadow-hover:0 8px 24px rgba(45,42,38,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Avenir Next','Segoe UI','Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+  }
+  .zh{font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei','Heiti TC',sans-serif;}
+  .jp{color:var(--ink-soft);font-style:italic;font-size:.9em;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 80px;}
+
+  .hero{text-align:center;padding:56px 20px 40px;position:relative;overflow:hidden;}
+  .hero .big-char{
+    font-size:clamp(56px,11vw,92px);font-weight:900;line-height:1.05;
+    background:linear-gradient(135deg,var(--coral),var(--amber));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    display:inline-block;animation:pop .7s cubic-bezier(.2,1.6,.4,1);
+  }
+  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+  .hero .romanized{font-size:clamp(16px,3vw,20px);color:var(--teal);font-weight:700;letter-spacing:.1em;margin-top:4px;}
+  .hero h1{font-size:clamp(22px,4.5vw,32px);margin-top:14px;font-weight:800;}
+  .hero p.sub{color:var(--ink-soft);margin-top:8px;font-size:17px;max-width:580px;margin-left:auto;margin-right:auto;}
+  .brand{display:inline-block;font-weight:900;letter-spacing:.05em;font-size:16px;background:var(--card);border:2px solid var(--coral-soft);border-radius:999px;padding:7px 20px;box-shadow:var(--shadow);margin-bottom:20px;}
+  .brand .canto{color:var(--teal);}
+  .brand .bestie{color:var(--coral);}
+  footer .brand-line{margin-top:12px;font-size:15px;font-weight:800;color:var(--ink);}
+  footer .brand-line .canto{color:var(--teal);}
+  footer .brand-line .bestie{color:var(--coral);}
+  .confetti{position:absolute;font-size:26px;opacity:.55;animation:floaty 5s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(6deg)}}
+
+  section{margin-top:56px;}
+  .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:12px;}
+  h2{font-size:clamp(22px,4vw,28px);font-weight:800;margin-bottom:6px;}
+  .section-sub{color:var(--ink-soft);margin-bottom:22px;max-width:660px;}
+  h3.sub-head{font-size:17px;font-weight:800;color:var(--ink);margin:30px 0 12px;display:flex;align-items:center;gap:8px;}
+  h3.sub-head:first-child{margin-top:0;}
+
+  .ex-row{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;}
+  .ex-row .zh{font-size:20px;font-weight:700;}
+  .ex-row .en{color:var(--ink);font-size:15px;}
+  .ex-row .en::before{content:"→ ";color:var(--ink-soft);}
+  .ex-row .num{font-family:'Avenir Next',sans-serif;font-weight:800;color:var(--coral);font-size:14px;background:var(--coral-soft);border-radius:999px;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ex-row.def{background:transparent;box-shadow:none;padding:0 20px;margin-bottom:8px;}
+  .ex-row.def .zh{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:#D8CFC4;font-weight:700;font-size:17px;}
+  .ex-row.def .en{font-weight:700;color:var(--ink);}
+  .ex-row.def .en::before{content:"= ";color:var(--ink-soft);}
+
+  .hint{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:16px;background:var(--teal-soft);display:table;margin-left:auto;margin-right:auto;padding:6px 16px;border-radius:999px;}
+  .verb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;}
+  .flip{perspective:900px;cursor:pointer;height:210px;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.1,.2,1);transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center;}
+  .flip-front{background:var(--card);border-bottom:5px solid var(--teal);}
+  .flip-front .emoji{font-size:38px;margin-bottom:6px;}
+  .flip-front .zh{font-size:24px;font-weight:800;}
+  .flip-front .jp{margin:2px 0 4px;}
+  .flip-front .en{font-size:13px;font-weight:700;color:var(--teal);}
+  .flip-back{background:var(--teal);color:#fff;transform:rotateY(180deg);padding:16px 12px;}
+  .flip-back .lit{font-size:12px;text-transform:uppercase;letter-spacing:.08em;opacity:.75;margin-bottom:4px;}
+  .flip-back .zh{font-size:15px;font-weight:800;line-height:1.4;}
+  .flip-back .jp{color:rgba(255,255,255,.85);margin:6px 0 2px;font-size:11px;}
+  .flip-back .en{font-size:12px;}
+
+  .tone-pill{display:inline-block;font-size:12px;font-weight:800;padding:3px 12px;border-radius:999px;margin-left:auto;}
+  .tone-pill.harsh{background:var(--coral-soft);color:var(--coral);}
+  .tone-pill.playful{background:var(--amber-soft);color:var(--amber);}
+  .tone-pill.romantic{background:var(--purple-soft);color:var(--purple);}
+  .tone-pill.awkward{background:var(--teal-soft);color:var(--teal);}
+  .tone-pill.caution{background:var(--coral-soft);color:var(--coral);}
+
+  .callout{margin-top:8px;background:var(--purple-soft);border-left:6px solid var(--purple);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;}
+  .callout h4{color:var(--purple);font-size:16px;margin-bottom:6px;}
+  .callout p{font-size:15px;color:var(--ink);}
+
+  .quiz-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px;}
+  .quiz-card .qnum{display:inline-block;background:var(--ink);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:3px 12px;margin-bottom:10px;}
+  .quiz-card .qtext{font-size:17px;font-weight:700;margin-bottom:14px;}
+  .quiz-card .qtext .zh{font-size:19px;}
+  .opts{display:grid;gap:10px;}
+  .opt{text-align:left;font-size:16px;font-family:inherit;background:var(--cream);border:2px solid #EDE5DB;border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .15s;color:var(--ink);}
+  .opt:hover:not(:disabled){border-color:var(--teal);background:var(--teal-soft);}
+  .opt:disabled{cursor:default;opacity:.75;}
+  .opt.correct{background:var(--teal-soft);border-color:var(--teal);opacity:1;font-weight:700;}
+  .opt.wrong{background:var(--coral-soft);border-color:var(--coral);opacity:1;}
+  .feedback{display:none;margin-top:14px;border-radius:12px;padding:12px 16px;font-size:14.5px;}
+  .feedback.show{display:block;animation:fadein .3s;}
+  .feedback.good{background:var(--teal-soft);border-left:5px solid var(--teal);}
+  .feedback.bad{background:var(--coral-soft);border-left:5px solid var(--coral);}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .score-bar{position:sticky;bottom:14px;z-index:5;pointer-events:none;background:var(--ink);color:#fff;border-radius:999px;padding:10px 22px;display:table;margin:20px auto 0;font-weight:700;font-size:15px;box-shadow:var(--shadow-hover);}
+  .final-msg{display:none;text-align:center;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border-radius:var(--radius);padding:28px 22px;margin-top:20px;}
+  .final-msg.show{display:block;animation:fadein .4s;}
+  .final-msg .big{font-size:34px;font-weight:900;}
+  .reset-btn{margin-top:14px;background:#fff;color:var(--ink);border:none;border-radius:999px;padding:10px 22px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:60px;}
+  footer .zh{font-size:22px;font-weight:800;color:var(--ink);}
+
+  .answer-key{display:none;}
+
+  @media print{
+    body{background:#fff;}
+    .confetti, .hint, .score-bar, .final-msg, .reset-btn{display:none !important;}
+    section{margin-top:26px;}
+    .ex-row, .quiz-card, .flip, .callout{break-inside:avoid;}
+
+    /* unfold flip cards so front + back both print, no click needed */
+    .flip{height:auto !important; cursor:default;}
+    .flip-inner{position:static !important; transform:none !important;}
+    .flip-face{position:static !important; box-shadow:none; backface-visibility:visible !important; padding:10px 14px;}
+    .flip-front{border-radius:16px 16px 0 0; border-bottom:none;}
+    .flip-back{border-radius:0 0 16px 16px; transform:none !important;}
+
+    /* keep the quiz a blank worksheet in print — no answers revealed inline */
+    .opt{break-inside:avoid;}
+
+    /* print-only answer key at the very end */
+    .answer-key{display:block !important; margin-top:56px; break-before:page;}
+    .answer-key h2{margin-bottom:4px;}
+    .answer-key ol{margin:16px 0 0 20px;}
+    .answer-key li{margin-bottom:12px; font-size:14px;}
+    .answer-key li b{color:var(--teal);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="confetti" style="left:8%;top:18%;">🍋</span>
+    <span class="confetti" style="right:10%;top:14%;animation-delay:1.2s;">🐱</span>
+    <span class="confetti" style="left:16%;bottom:8%;animation-delay:.6s;">🌱</span>
+    <span class="confetti" style="right:18%;bottom:12%;animation-delay:1.8s;">🍌</span>
+    <div><span class="brand"><span class="canto">canto</span><span class="bestie">bestie</span></span></div>
+    <div class="big-char zh">食</div>
+    <div class="romanized">sik6</div>
+    <h1>6 things 食 really means — a Cantonese slang guide</h1>
+    <p class="sub">食 (sik6) literally means "to eat." But in real conversations, it can mean getting rejected, taking the blame, or telling someone off. Here are 6 expressions every learner should know.</p>
+  </header>
+
+  <!-- ================= PART 1: QUICK REFERENCE ================= -->
+  <section>
+    <span class="kicker" style="background:var(--teal-soft);color:var(--teal);">Part 1</span>
+    <h2>Spot the meaning 👀</h2>
+    <p class="section-sub">Tap a card — the real slang meaning is on the front, the (much funnier) literal translation is on the back.</p>
+    <p class="hint">👆 Tap a card to flip it!</p>
+    <div class="verb-grid">
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: sik6 si2"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">💩</div><div class="zh">食屎</div><div class="jp">sik6 si2</div><div class="en">a rude way to tell someone off</div></div>
+        <div class="flip-face flip-back"><div class="lit">Literally</div><div class="zh">"eat shit" — harsh, rude tone</div><div class="jp">sik6 si2 laa1 nei5!</div><div class="en">Eat shit! / F*** off!</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: sik6 ziu1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🍌</div><div class="zh">食蕉</div><div class="jp">sik6 ziu1</div><div class="en">a playful way to tell someone off</div></div>
+        <div class="flip-face flip-back"><div class="lit">Literally</div><div class="zh">"eat a banana" — lighter, joking tone</div><div class="jp">sik6 ziu1 laa1 nei5!</div><div class="en">Go eat a banana!</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: sik6 ning4 mung1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🍋</div><div class="zh">食檸檬</div><div class="jp">sik6 ning4 mung1</div><div class="en">to get rejected (romantically)</div></div>
+        <div class="flip-face flip-back"><div class="lit">Literally</div><div class="zh">"eat a lemon"</div><div class="jp">dim2 zi1 sik6 zo2 ning4 mung1</div><div class="en">…but ended up getting rejected</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: sik6 sei2 maau1"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🐱</div><div class="zh">食死貓</div><div class="jp">sik6 sei2 maau1</div><div class="en">to be unfairly blamed</div></div>
+        <div class="flip-face flip-back"><div class="lit">Literally</div><div class="zh">"eat a dead cat"</div><div class="jp">dim2 gaai2 ngo5 jiu3 sik6 sei2 maau1 aa3?</div><div class="en">Why do I have to take the blame?</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: sik6 jyun5 faan6"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🍚</div><div class="zh">食軟飯</div><div class="jp">sik6 jyun5 faan6</div><div class="en">to live off a partner financially</div></div>
+        <div class="flip-face flip-back"><div class="lit">Literally</div><div class="zh">"eat soft rice"</div><div class="jp">jat1 tai2 zau6 zi1 keoi5 sik6 jyun5 faan6</div><div class="en">You can tell he lives off her</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: sik6 neoi5"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🚩</div><div class="zh">食女</div><div class="jp">sik6 neoi5</div><div class="en">to chase women for hookups</div></div>
+        <div class="flip-face flip-back"><div class="lit">Literally</div><div class="zh">"eat women"</div><div class="jp">zau1 wai4 sik6 neoi5</div><div class="en">hooking up with different women</div></div>
+      </div></div>
+      <div class="flip" tabindex="0" role="button" aria-label="Flip card: sik6 wui4 tau4 cou2"><div class="flip-inner">
+        <div class="flip-face flip-front"><div class="emoji">🌱</div><div class="zh">食回頭草</div><div class="jp">sik6 wui4 tau4 cou2</div><div class="en">to get back with an ex</div></div>
+        <div class="flip-face flip-back"><div class="lit">Literally</div><div class="zh">"eat the grass behind you"</div><div class="jp">jau6 sik6 wui4 tau4 cou2 aa3?</div><div class="en">Why are you back with your ex?</div></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ================= PART 2: DEEP DIVE ================= -->
+  <section>
+    <span class="kicker" style="background:var(--coral-soft);color:var(--coral);">Part 2</span>
+    <h2>The 6 expressions, up close 🔍</h2>
+    <p class="section-sub">Same word, six completely different vibes. Here's how each one actually gets used — and how strong it sounds.</p>
+
+    <h3 class="sub-head">💩🍌 食屎 / 食蕉 — telling someone off <span class="tone-pill harsh">😤 harsh → playful</span></h3>
+    <div class="ex-row def"><span class="zh">食屎</span><span class="jp">sik6 si2</span><span class="en">a rude way to tell someone off</span></div>
+    <div class="ex-row def"><span class="zh">食蕉</span><span class="jp">sik6 ziu1</span><span class="en">a funny, playful way to tell someone off</span></div>
+    <div class="ex-row"><span class="num">1</span><span class="zh">食屎啦你！食蕉啦你！</span><span class="jp">sik6 si2 laa1 nei5! sik6 ziu1 laa1 nei5!</span><span class="en">Eat shit! Go eat a banana! / Fuck off!</span></div>
+    <div class="callout">
+      <h4>👉 Tone check</h4>
+      <p>食屎 is much stronger and ruder. 食蕉 can still sound rude depending on tone, but it's usually more joking and less aggressive than 食屎.</p>
+    </div>
+
+    <h3 class="sub-head">🍋 食檸檬 — getting rejected <span class="tone-pill romantic">💔 romantic</span></h3>
+    <div class="ex-row def"><span class="zh">食檸檬</span><span class="jp">sik6 ning4 mung1</span><span class="en">to get rejected, especially when asking someone out</span></div>
+    <div class="ex-row"><span class="num">2</span><span class="zh">佢約咗個女仔食飯，點知食咗檸檬。</span><span class="jp">keoi5 joek3 zo2 go3 neoi5 zai2 sik6 faan6, dim2 zi1 sik6 zo2 ning4 mung1.</span><span class="en">He asked a girl out for dinner, but ended up getting rejected.</span></div>
+    <div class="callout">
+      <h4>👉 When you'll hear it</h4>
+      <p>食檸檬 is commonly used when someone gets turned down romantically — a lemon standing in for that sour, puckered feeling.</p>
+    </div>
+
+    <h3 class="sub-head">🐱 食死貓 — taking the blame <span class="tone-pill awkward">😑 unfair</span></h3>
+    <div class="ex-row def"><span class="zh">食死貓</span><span class="jp">sik6 sei2 maau1</span><span class="en">to take the blame for something you didn't do</span></div>
+    <div class="ex-row"><span class="num">3</span><span class="zh">明明都唔係我做嘅，點解我要食死貓呀？</span><span class="jp">ming4 ming4 dou1 m4 hai6 ngo5 zou6 ge3, dim2 gaai2 ngo5 jiu3 sik6 sei2 maau1 aa3?</span><span class="en">I clearly didn't do it, so why do I have to take the blame?</span></div>
+    <div class="callout">
+      <h4>👉 When you'll hear it</h4>
+      <p>If someone makes you 食死貓, they're pinning responsibility on you for something that genuinely wasn't your fault.</p>
+    </div>
+
+    <h3 class="sub-head">🍚 食軟飯 — living off a partner <span class="tone-pill playful">😏 mocking</span></h3>
+    <div class="ex-row def"><span class="zh">食軟飯</span><span class="jp">sik6 jyun5 faan6</span><span class="en">to rely financially on a romantic partner</span></div>
+    <div class="ex-row"><span class="num">4</span><span class="zh">佢女朋友餐餐都畀晒錢，一睇就知佢食軟飯啦。</span><span class="jp">keoi5 neoi5 pang4 jau5 caan1 caan1 dou1 bei2 saai3 cin2, jat1 tai2 zau6 zi1 keoi5 sik6 jyun5 faan6 laa1.</span><span class="en">His girlfriend pays for every meal. You can tell straight away that he lives off her.</span></div>
+    <div class="callout">
+      <h4>👉 Tone check</h4>
+      <p>Traditionally used for a man who lives off a woman. It almost always carries a negative, mocking, or teasing tone.</p>
+    </div>
+
+    <h3 class="sub-head">🚩 食女 — chasing hookups <span class="tone-pill caution">🚩 red flag</span></h3>
+    <div class="ex-row def"><span class="zh">食女</span><span class="jp">sik6 neoi5</span><span class="en">to pick up, hook up with, or sleep with different women</span></div>
+    <div class="ex-row"><span class="num">5</span><span class="zh">佢成日落 club，周圍食女。</span><span class="jp">keoi5 seng4 jat6 lok6 club, zau1 wai4 sik6 neoi5.</span><span class="en">He's always going clubbing and hooking up with different women.</span></div>
+    <div class="callout">
+      <h4>👉 Tone check</h4>
+      <p>Usually describes a man who frequently pursues women for casual sex. 食女 can sound objectifying and often has a negative, red-flag connotation.</p>
+    </div>
+
+    <h3 class="sub-head">🌱 食回頭草 — back with an ex <span class="tone-pill playful">🙄 teasing</span></h3>
+    <div class="ex-row def"><span class="zh">食回頭草</span><span class="jp">sik6 wui4 tau4 cou2</span><span class="en">to get back together with an ex</span></div>
+    <div class="ex-row"><span class="num">6</span><span class="zh">你唔係話以後都唔會再搵佢咩？做咩又食回頭草呀？</span><span class="jp">nei5 m4 hai6 waa6 ji5 hau6 dou1 m4 wui5 zoi3 wan2 keoi5 me1? zou6 me1 jau6 sik6 wui4 tau4 cou2 aa3?</span><span class="en">Didn't you say you'd never contact them again? Why are you getting back with your ex?</span></div>
+    <div class="callout">
+      <h4>👉 When you'll hear it</h4>
+      <p>Can be used more broadly for going back to something from the past, but it's especially common — and especially judgmental — in relationship contexts.</p>
+    </div>
+  </section>
+
+  <!-- ================= PART 3: QUIZ ================= -->
+  <section id="quiz-section">
+    <span class="kicker" style="background:var(--amber-soft);color:var(--amber);">Part 3</span>
+    <h2>Test your street Cantonese 🎯</h2>
+    <p class="section-sub">8 quick questions covering all 6 expressions. Tap an answer for instant feedback. 加油 (gaa1 jau4)!</p>
+    <div id="quiz"></div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 0 answered</div>
+    <div class="final-msg" id="finalMsg">
+      <div class="big" id="finalScore"></div>
+      <div id="finalWords" style="margin-top:6px;font-size:17px;"></div>
+      <button class="reset-btn" onclick="resetQuiz()">🔄 Try again</button>
+    </div>
+  </section>
+
+  <section class="answer-key">
+    <span class="kicker" style="background:var(--ink);color:#fff;">For the teacher</span>
+    <h2>Answer key</h2>
+    <p class="section-sub">Printed separately from the worksheet above so students don't see it by accident.</p>
+    <ol id="answerKeyList"></ol>
+  </section>
+
+  <footer>
+    <div class="zh">咪亂用呀！(mai5 lyun6 jung6 aa3!) — Don't misuse these!</div>
+    <p style="margin-top:6px;">Try dropping one into a real conversation with a Cantonese-speaking friend — carefully 😏</p>
+    <p class="brand-line">made with ❤️ by <span class="canto">canto</span><span class="bestie">bestie</span></p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.flip').forEach(function(card){
+    card.addEventListener('click', function(){ card.classList.toggle('flipped'); });
+    card.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); card.classList.toggle('flipped'); }
+    });
+  });
+
+  var QUESTIONS = [
+    {
+      q:'食檸檬 (sik6 ning4 mung1) really means:',
+      opts:['To eat a healthy snack','To get rejected, especially romantically','To feel sour about something small'],
+      correct:1,
+      why:'食檸檬 literally means "eat a lemon" but really means to get rejected — especially when asking someone out.'
+    },
+    {
+      q:'Fill in the blank: 佢約咗個女仔食飯，點知食咗___。',
+      opts:['蕉 (ziu1)','檸檬 (ning4 mung1)','死貓 (sei2 maau1)'],
+      correct:1,
+      why:'佢約咗個女仔食飯，點知食咗檸檬 — "He asked a girl out for dinner, but ended up getting rejected."'
+    },
+    {
+      q:'食死貓 (sik6 sei2 maau1) describes:',
+      opts:['Trying an exotic dish','Taking the blame for something you didn’t do','Getting startled by a pet'],
+      correct:1,
+      why:'食死貓 literally "eat a dead cat" — means being unfairly blamed for something that wasn’t your fault.'
+    },
+    {
+      q:'Between 食屎 and 食蕉, which is the milder, more playful way to tell someone off?',
+      opts:['食屎 (sik6 si2)','食蕉 (sik6 ziu1)','They’re equally rude'],
+      correct:1,
+      why:'食蕉 ("eat a banana") is a lighter, more joking version. 食屎 ("eat shit") is much stronger and ruder.'
+    },
+    {
+      q:'食軟飯 (sik6 jyun5 faan6) describes someone who:',
+      opts:['Only eats soft foods','Relies financially on a romantic partner','Cooks rice for a living'],
+      correct:1,
+      why:'食軟飯 literally "eat soft rice" — traditionally describes a man who lives off his girlfriend or wife financially.'
+    },
+    {
+      q:'食女 (sik6 neoi5) is used to describe a man who:',
+      opts:['Has a lot of female friends','Frequently pursues women for casual hookups','Is raising a daughter'],
+      correct:1,
+      why:'食女 literally "eat women" — describes someone who frequently chases women for casual sex. It often carries a negative, red-flag connotation.'
+    },
+    {
+      q:'食回頭草 (sik6 wui4 tau4 cou2) means:',
+      opts:['To regret a decision','To get back together with an ex','To return a favor'],
+      correct:1,
+      why:'食回頭草 literally "eat the grass behind you" — means going back to a previous romantic partner, usually with a slightly judgmental tone.'
+    },
+    {
+      q:'你唔係話以後都唔會再搵佢咩？做咩又食回頭草呀？ — what is being questioned here?',
+      opts:['Why someone changed jobs again','Why someone is getting back with an ex they swore off','Why someone is eating leftovers'],
+      correct:1,
+      why:'The speaker is calling out a friend for reconnecting with an ex after saying they never would — classic 食回頭草.'
+    }
+  ];
+
+  var answered = 0, score = 0;
+  var quizEl = document.getElementById('quiz');
+
+  function buildQuiz(){
+    answered = 0; score = 0;
+    quizEl.innerHTML = '';
+    QUESTIONS.forEach(function(item, qi){
+      var card = document.createElement('div');
+      card.className = 'quiz-card';
+      var optsHtml = item.opts.map(function(o, oi){
+        return '<button class="opt zh" data-q="'+qi+'" data-o="'+oi+'">'+o+'</button>';
+      }).join('');
+      card.innerHTML =
+        '<span class="qnum">Question '+(qi+1)+' of '+QUESTIONS.length+'</span>' +
+        '<div class="qtext">'+item.q+'</div>' +
+        '<div class="opts">'+optsHtml+'</div>' +
+        '<div class="feedback" id="fb-'+qi+'"></div>';
+      quizEl.appendChild(card);
+    });
+    quizEl.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click', onAnswer);
+    });
+    updateScore();
+    document.getElementById('finalMsg').classList.remove('show');
+  }
+
+  function onAnswer(e){
+    var btn = e.currentTarget;
+    var qi = +btn.dataset.q, oi = +btn.dataset.o;
+    var item = QUESTIONS[qi];
+    var card = btn.closest('.quiz-card');
+    var buttons = card.querySelectorAll('.opt');
+    buttons.forEach(function(b){ b.disabled = true; });
+    var fb = document.getElementById('fb-'+qi);
+    if(oi === item.correct){
+      btn.classList.add('correct');
+      score++;
+      fb.className = 'feedback good show';
+      fb.innerHTML = '✅ <b>啱喇! (ngaam1 laa3!) Correct!</b> ' + item.why;
+    } else {
+      btn.classList.add('wrong');
+      buttons[item.correct].classList.add('correct');
+      fb.className = 'feedback bad show';
+      fb.innerHTML = '❌ <b>Not quite!</b> ' + item.why;
+    }
+    answered++;
+    updateScore();
+    if(answered === QUESTIONS.length) showFinal();
+  }
+
+  function updateScore(){
+    document.getElementById('scoreBar').textContent =
+      'Score: ' + score + ' / ' + answered + ' answered';
+  }
+
+  function showFinal(){
+    var msg = document.getElementById('finalMsg');
+    document.getElementById('finalScore').textContent = score + ' / ' + QUESTIONS.length;
+    var words;
+    if(score === QUESTIONS.length){ words = '🏆 好犀利呀! (hou2 sai1 lei6 aa3!) You really know your 食!'; }
+    else if(score >= 6){ words = '🎉 好叻呀! (hou2 lek1 aa3!) Great job — just review the ones you missed.'; }
+    else if(score >= 3){ words = '💪 唔錯! (m4 co3!) Good start — go through the expressions again.'; }
+    else { words = '📖 唔緊要! (m4 gan2 jiu3!) No worries — review the 6 expressions and try again!'; }
+    document.getElementById('finalWords').textContent = words;
+    msg.classList.add('show');
+    msg.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function resetQuiz(){
+    buildQuiz();
+    document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
+  }
+
+  function buildAnswerKey(){
+    var list = document.getElementById('answerKeyList');
+    list.innerHTML = QUESTIONS.map(function(item){
+      return '<li><b>' + item.opts[item.correct] + '</b> — ' + item.why + '</li>';
+    }).join('');
+  }
+
+  buildQuiz();
+  buildAnswerKey();
+</script>
+</body>
+</html>
