@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13 Must-Know Everyday Cantonese Patterns — cantobestie</title>
+<style>
+  :root{
+    --cream:#FFF8F0;
+    --ink:#2D2A26;
+    --ink-soft:#6B6560;
+    --coral:#E85D4C;
+    --coral-soft:#FDEBE8;
+    --teal:#0E8A7B;
+    --teal-soft:#E3F4F1;
+    --amber:#E09112;
+    --amber-soft:#FCF1DC;
+    --purple:#7C5CBF;
+    --purple-soft:#F0EAFB;
+    --card:#FFFFFF;
+    --radius:18px;
+    --shadow:0 4px 14px rgba(45,42,38,.08);
+    --shadow-hover:0 8px 24px rgba(45,42,38,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Avenir Next','Segoe UI','Noto Sans HK','PingFang HK','Microsoft JhengHei',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+  }
+  .zh{font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei','Heiti TC',sans-serif;}
+  .jp{color:var(--ink-soft);font-style:italic;font-size:.9em;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 80px;}
+
+  .hero{text-align:center;padding:56px 20px 40px;position:relative;overflow:hidden;}
+  .hero .big-char{
+    font-size:clamp(56px,11vw,92px);font-weight:900;line-height:1.05;
+    background:linear-gradient(135deg,var(--coral),var(--amber));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    display:inline-block;animation:pop .7s cubic-bezier(.2,1.6,.4,1);
+  }
+  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+  .hero .romanized{font-size:clamp(16px,3vw,20px);color:var(--teal);font-weight:700;letter-spacing:.1em;margin-top:4px;}
+  .hero h1{font-size:clamp(22px,4.5vw,32px);margin-top:14px;font-weight:800;}
+  .hero p.sub{color:var(--ink-soft);margin-top:8px;font-size:17px;max-width:560px;margin-left:auto;margin-right:auto;}
+  .brand{display:inline-block;font-weight:900;letter-spacing:.05em;font-size:16px;background:var(--card);border:2px solid var(--coral-soft);border-radius:999px;padding:7px 20px;box-shadow:var(--shadow);margin-bottom:20px;}
+  .brand .canto{color:var(--teal);}
+  .brand .bestie{color:var(--coral);}
+  footer .brand-line{margin-top:12px;font-size:15px;font-weight:800;color:var(--ink);}
+  footer .brand-line .canto{color:var(--teal);}
+  footer .brand-line .bestie{color:var(--coral);}
+  .confetti{position:absolute;font-size:26px;opacity:.55;animation:floaty 5s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(6deg)}}
+
+  section{margin-top:56px;}
+  .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:12px;}
+  h2{font-size:clamp(22px,4vw,28px);font-weight:800;margin-bottom:6px;}
+  .section-sub{color:var(--ink-soft);margin-bottom:22px;max-width:660px;}
+  h3.sub-head{font-size:16px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px;}
+  h3.sub-head:first-child{margin-top:0;}
+
+  .ex-row{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;}
+  .ex-row .zh{font-size:20px;font-weight:700;}
+  .ex-row .en{color:var(--ink);font-size:15px;}
+  .ex-row .en::before{content:"→ ";color:var(--ink-soft);}
+  .ex-row .num{font-family:'Avenir Next',sans-serif;font-weight:800;color:var(--coral);font-size:14px;background:var(--coral-soft);border-radius:999px;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+  .hint{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:16px;background:var(--teal-soft);display:table;margin-left:auto;margin-right:auto;padding:6px 16px;border-radius:999px;}
+  .verb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;}
+  .flip{perspective:900px;cursor:pointer;height:210px;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.1,.2,1);transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center;}
+  .flip-front{background:var(--card);border-bottom:5px solid var(--teal);}
+  .flip-front .emoji{font-size:38px;margin-bottom:6px;}
+  .flip-front .zh{font-size:24px;font-weight:800;}
+  .flip-front .jp{margin:2px 0 4px;}
+  .flip-front .en{font-size:14px;font-weight:700;color:var(--teal);}
+  .flip-back{background:var(--teal);color:#fff;transform:rotateY(180deg);}
+  .flip-back .zh{font-size:16px;font-weight:800;line-height:1.4;}
+  .flip-back .jp{color:rgba(255,255,255,.85);margin:6px 0;font-size:12px;}
+  .flip-back .en{font-size:13px;}
+
+  .formula{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin:18px 0 8px;}
+  .chip{font-size:clamp(16px,3vw,21px);font-weight:800;padding:10px 20px;border-radius:14px;}
+  .chip.verb{background:#EFEBE6;color:var(--ink);}
+  .chip.mark{color:#fff;}
+  .chip.plain{background:transparent;padding:0;color:var(--ink-soft);font-weight:700;}
+  .formula-meaning{text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:20px;}
+  .formula-meaning b{color:var(--ink);}
+  .g1 .kicker{background:var(--teal-soft);color:var(--teal);} .g1 .chip.mark{background:var(--teal);}
+  .g2 .kicker{background:var(--coral-soft);color:var(--coral);} .g2 .chip.mark{background:var(--coral);}
+  .g3 .kicker{background:var(--amber-soft);color:var(--amber);} .g3 .chip.mark{background:var(--amber);}
+
+  .callout{margin-top:22px;background:var(--purple-soft);border-left:6px solid var(--purple);border-radius:0 var(--radius) var(--radius) 0;padding:20px 22px;}
+  .callout h4{color:var(--purple);font-size:17px;margin-bottom:6px;}
+  .callout p{font-size:15px;color:var(--ink);}
+  .callout .mini-ex{margin-top:12px;}
+  .callout .mini-ex div{margin-bottom:8px;font-size:15px;}
+  .callout .mini-ex .zh{font-weight:700;font-size:17px;}
+
+  .map{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 22px;}
+  .map-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+  @media(max-width:760px){.map-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.map-grid{grid-template-columns:1fr;}}
+  .map-card{border-radius:14px;padding:16px 12px;text-align:center;}
+  .map-card .pat{font-size:19px;font-weight:800;}
+  .map-card .mean{font-size:13px;margin-top:6px;color:var(--ink-soft);}
+  .map-card.c1{background:var(--coral-soft);} .map-card.c1 .pat{color:var(--coral);}
+  .map-card.c2{background:var(--amber-soft);} .map-card.c2 .pat{color:var(--amber);}
+  .map-card.c3{background:var(--teal-soft);} .map-card.c3 .pat{color:var(--teal);}
+  .map-card.c4{background:var(--purple-soft);} .map-card.c4 .pat{color:var(--purple);}
+
+  .quiz-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px;}
+  .quiz-card .qnum{display:inline-block;background:var(--ink);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:3px 12px;margin-bottom:10px;}
+  .quiz-card .qtext{font-size:17px;font-weight:700;margin-bottom:14px;}
+  .quiz-card .qtext .zh{font-size:19px;}
+  .opts{display:grid;gap:10px;}
+  .opt{text-align:left;font-size:16px;font-family:inherit;background:var(--cream);border:2px solid #EDE5DB;border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .15s;color:var(--ink);}
+  .opt:hover:not(:disabled){border-color:var(--teal);background:var(--teal-soft);}
+  .opt:disabled{cursor:default;opacity:.75;}
+  .opt.correct{background:var(--teal-soft);border-color:var(--teal);opacity:1;font-weight:700;}
+  .opt.wrong{background:var(--coral-soft);border-color:var(--coral);opacity:1;}
+  .feedback{display:none;margin-top:14px;border-radius:12px;padding:12px 16px;font-size:14.5px;}
+  .feedback.show{display:block;animation:fadein .3s;}
+  .feedback.good{background:var(--teal-soft);border-left:5px solid var(--teal);}
+  .feedback.bad{background:var(--coral-soft);border-left:5px solid var(--coral);}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .score-bar{position:sticky;bottom:14px;z-index:5;pointer-events:none;background:var(--ink);color:#fff;border-radius:999px;padding:10px 22px;display:table;margin:20px auto 0;font-weight:700;font-size:15px;box-shadow:var(--shadow-hover);}
+  .final-msg{display:none;text-align:center;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border-radius:var(--radius);padding:28px 22px;margin-top:20px;}
+  .final-msg.show{display:block;animation:fadein .4s;}
+  .final-msg .big{font-size:34px;font-weight:900;}
+  .reset-btn{margin-top:14px;background:#fff;color:var(--ink);border:none;border-radius:999px;padding:10px 22px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:60px;}
+  footer .zh{font-size:22px;font-weight:800;color:var(--ink);}
+
+  .answer-key{display:none;}
+
+  @media print{
+    body{background:#fff;}
+    .confetti, .hint, .score-bar, .final-msg, .reset-btn{display:none !important;}
+    section{margin-top:26px;}
+    .ex-row, .quiz-card, .flip, .callout, .map, .job-card{break-inside:avoid;}
+
+    /* unfold flip cards so front + back both print, no click needed */
+    .flip{height:auto !important; cursor:default;}
+    .flip-inner{position:static !important; transform:none !important;}
+    .flip-face{position:static !important; box-shadow:none; backface-visibility:visible !important; padding:10px 14px;}
+    .flip-front{border-radius:16px 16px 0 0; border-bottom:none;}
+    .flip-back{border-radius:0 0 16px 16px; transform:none !important;}
+
+    /* keep the quiz a blank worksheet in print — no answers revealed inline */
+    .opt{break-inside:avoid;}
+
+    /* print-only answer key at the very end */
+    .answer-key{display:block !important; margin-top:56px; break-before:page;}
+    .answer-key h2{margin-bottom:4px;}
+    .answer-key ol{margin:16px 0 0 20px;}
+    .answer-key li{margin-bottom:12px; font-size:14px;}
+    .answer-key li b{color:var(--teal);}
+  }
+
+  /* ---------- extra: group 4 (purple), pattern cards, PDF unlock ---------- */
+  .g4 .kicker{background:var(--purple-soft);color:var(--purple);} .g4 .chip.mark{background:var(--purple);}
+  .pattern-card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px;}
+  .pattern-card .pnum{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:4px 12px;margin-bottom:10px;}
+  .pattern-card .ptag{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+  .p-formula .fjp{font-size:10px;font-weight:700;font-style:italic;opacity:.7;margin-left:1px;}
+  .p-formula i{font-size:10px;font-weight:600;font-style:italic;opacity:.65;margin-left:2px;}
+  .pattern-card .zh-big{font-size:22px;font-weight:800;margin-bottom:4px;}
+  .pattern-card .jp{display:block;margin-bottom:2px;}
+  .pattern-card .en{color:var(--ink);font-size:15px;margin-bottom:12px;}
+  .pattern-card .p-formula{font-family:'SF Mono','Consolas',monospace;font-size:14px;font-weight:700;border-radius:10px;padding:9px 14px;display:inline-block;}
+  .p-formula b{font-weight:800;}
+
+  .unlock-wrap{display:none;margin-top:26px;}
+  .unlock-wrap.show{display:block;animation:fadein .5s;}
+  .unlock-card{background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border-radius:var(--radius);padding:32px 26px;text-align:center;}
+  .unlock-card .big{font-size:30px;font-weight:900;margin-bottom:8px;}
+  .unlock-card p{opacity:.92;font-size:15.5px;max-width:440px;margin:0 auto 20px;}
+  .dl-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);font-weight:800;font-size:16px;border-radius:999px;padding:14px 28px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:transform .2s;}
+  .dl-btn:hover{transform:translateY(-2px);}
+  .dl-btn .dl-arrow{font-size:18px;}
+
+  .locked-hint{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:26px;background:var(--cream);border:2px dashed #E4D9C8;border-radius:14px;padding:16px 20px;}
+  .locked-hint b{color:var(--ink);}
+
+  @media print{
+    .unlock-wrap, .locked-hint{display:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="confetti" style="left:8%;top:18%;">🏃</span>
+    <span class="confetti" style="right:10%;top:14%;animation-delay:1.2s;">🧘‍♀️</span>
+    <span class="confetti" style="left:16%;bottom:8%;animation-delay:.6s;">💼</span>
+    <span class="confetti" style="right:18%;bottom:12%;animation-delay:1.8s;">📚</span>
+    <div><span class="brand"><span class="canto">canto</span><span class="bestie">bestie</span></span></div>
+    <div class="big-char zh">句式</div>
+    <div class="romanized">geoi3 sik1</div>
+    <h1>13 Must-Know Everyday Cantonese Patterns 🇭🇰</h1>
+    <p class="sub">Stop memorizing random Cantonese words — instead, learn these. Every example below uses the same verb, 做 (zou6, "to do/make"), so you can see exactly how each small word changes the meaning.</p>
+  </header>
+
+  <!-- ================= THE BIG IDEA ================= -->
+  <section>
+    <span class="kicker" style="background:var(--amber-soft);color:var(--amber);">The Big Idea</span>
+    <h2>One verb, thirteen ways to use it 🧩</h2>
+    <p class="section-sub">All 13 examples use 做 (zou6). Notice how the meaning shifts completely depending on which small word attaches to it — learn the pattern, and you can plug in almost any verb you already know.</p>
+  </section>
+
+  <!-- ================= GROUP 1 ================= -->
+  <section class="g1">
+    <span class="kicker">Group 1</span>
+    <h2>The basics — marking when it happens ⏱️</h2>
+    <p class="section-sub">These three patterns share the same skeleton (Subject + Verb + Object) — only the piece right after the verb changes.</p>
+
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--teal);">Pattern 1</span>
+      <span class="ptag" style="color:var(--teal);">PRESENT / HABITUAL</span>
+      <div class="zh-big zh">我做運動。</div>
+      <span class="jp">ngo5 zou6 wan6 dung6.</span>
+      <div class="en">I exercise.</div>
+      <span class="p-formula" style="background:var(--teal-soft);color:var(--teal);">Subject + Verb + Object</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--teal);">Pattern 2</span>
+      <span class="ptag" style="color:var(--teal);">PAST TENSE — COMPLETED ACTION</span>
+      <div class="zh-big zh">我做咗家務。</div>
+      <span class="jp">ngo5 zou6 zo2 gaa1 mou6.</span>
+      <div class="en">I did some housework.</div>
+      <span class="p-formula" style="background:var(--teal-soft);color:var(--teal);">Subject + Verb + <b>咗</b><span class="fjp">zo2</span> <i>(past tense)</i> + Object</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--teal);">Pattern 3</span>
+      <span class="ptag" style="color:var(--teal);">PRESENT CONTINUOUS — HAPPENING NOW</span>
+      <div class="zh-big zh">我做緊功課。</div>
+      <span class="jp">ngo5 zou6 gan2 gung1 fo3.</span>
+      <div class="en">I'm doing my homework.</div>
+      <span class="p-formula" style="background:var(--teal-soft);color:var(--teal);">Subject + Verb + <b>緊</b><span class="fjp">gan2</span> <i>(ongoing)</i> + Object</span>
+    </div>
+  </section>
+
+  <!-- ================= GROUP 2 ================= -->
+  <section class="g4">
+    <span class="kicker">Group 2</span>
+    <h2>Plans, ability &amp; possibility 🎯</h2>
+    <p class="section-sub">From "planning to" all the way to "physically able to" — four shades of possibility, each with its own marker.</p>
+
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--purple);">Pattern 4</span>
+      <span class="ptag" style="color:var(--purple);">FUTURE PLAN / INTENTION</span>
+      <div class="zh-big zh">我打算做老師。</div>
+      <span class="jp">ngo5 daa2 syun3 zou6 lou5 si1.</span>
+      <div class="en">I plan to become a teacher.</div>
+      <span class="p-formula" style="background:var(--purple-soft);color:var(--purple);">Subject + <b>打算</b><span class="fjp">daa2syun3</span> <i>(plan to)</i> + Verb + Noun</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--purple);">Pattern 5</span>
+      <span class="ptag" style="color:var(--purple);">FUTURE TENSE — WILL / GOING TO</span>
+      <div class="zh-big zh">我會做 gym。</div>
+      <span class="jp">ngo5 wui5 zou6 gym1.</span>
+      <div class="en">I will hit the gym.</div>
+      <span class="p-formula" style="background:var(--purple-soft);color:var(--purple);">Subject + <b>會</b><span class="fjp">wui5</span> <i>(future tense)</i> + Verb + Object</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--purple);">Pattern 6</span>
+      <span class="ptag" style="color:var(--purple);">POTENTIAL — ABLE TO (CAN)</span>
+      <div class="zh-big zh">放心啦，我做得到！</div>
+      <span class="jp">fong3 sam1 laa1, ngo5 zou6 dak1 dou2!</span>
+      <div class="en">Don't worry, I can do it!</div>
+      <span class="p-formula" style="background:var(--purple-soft);color:var(--purple);">Subject + Verb + <b>得到</b><span class="fjp">dak1dou2</span> <i>(can)</i></span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--purple);">Pattern 7</span>
+      <span class="ptag" style="color:var(--purple);">POTENTIAL — UNABLE TO (CAN’T)</span>
+      <div class="zh-big zh">今日太攰喇，我做唔到。</div>
+      <span class="jp">gam1 jat6 taai3 gui6 laa3, ngo5 zou6 m4 dou2.</span>
+      <div class="en">I'm too tired today. I can't do it.</div>
+      <span class="p-formula" style="background:var(--purple-soft);color:var(--purple);">Subject + Verb + <b>唔到</b><span class="fjp">m4dou2</span> <i>(can't)</i></span>
+    </div>
+  </section>
+
+  <!-- ================= GROUP 3 ================= -->
+  <section class="g3">
+    <span class="kicker">Group 3</span>
+    <h2>Obligation &amp; necessity 📌</h2>
+    <p class="section-sub">When something has to happen — whether it's scheduled, or just non-negotiable.</p>
+
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--amber);">Pattern 8</span>
+      <span class="ptag" style="color:var(--amber);">OBLIGATION — A FUTURE NECESSITY</span>
+      <div class="zh-big zh">聽日我要做身體檢查。</div>
+      <span class="jp">ting1 jat6 ngo5 jiu3 zou6 san1 tai2 gim2 caa4.</span>
+      <div class="en">I need to have a medical check-up tomorrow.</div>
+      <span class="p-formula" style="background:var(--amber-soft);color:var(--amber);">Time + Subject + <b>要</b><span class="fjp">jiu3</span> <i>(need to)</i> + Verb + Object</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--amber);">Pattern 9</span>
+      <span class="ptag" style="color:var(--amber);">STRONG OBLIGATION — EMPHATIC</span>
+      <div class="zh-big zh">呢件事我一定要做。</div>
+      <span class="jp">ni1 gin6 si6 ngo5 jat1 ding6 jiu3 zou6.</span>
+      <div class="en">I definitely have to do this.</div>
+      <span class="p-formula" style="background:var(--amber-soft);color:var(--amber);">Topic + Subject + <b>一定要</b><span class="fjp">jat1ding6jiu3</span> <i>(definitely must)</i> + Verb</span>
+    </div>
+  </section>
+
+  <!-- ================= GROUP 4 ================= -->
+  <section class="g2">
+    <span class="kicker">Group 4</span>
+    <h2>Desires &amp; feelings 💛</h2>
+    <p class="section-sub">From a wish, to an invitation, to a full-blown like or hate — how you feel about the action comes right before the verb.</p>
+
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--coral);">Pattern 10</span>
+      <span class="ptag" style="color:var(--coral);">DESIRE — WANT TO</span>
+      <div class="zh-big zh">我想做生意。</div>
+      <span class="jp">ngo5 soeng2 zou6 saang1 ji3.</span>
+      <div class="en">I want to start a business.</div>
+      <span class="p-formula" style="background:var(--coral-soft);color:var(--coral);">Subject + <b>想</b><span class="fjp">soeng2</span> <i>(want to)</i> + Verb + Object</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--coral);">Pattern 11</span>
+      <span class="ptag" style="color:var(--coral);">SUGGESTION — A SOFT PROPOSAL</span>
+      <div class="zh-big zh">不如我哋一齊做運動？</div>
+      <span class="jp">bat1 jyu4 ngo5 dei6 jat1 cai4 zou6 wan6 dung6?</span>
+      <div class="en">How about we exercise together?</div>
+      <span class="p-formula" style="background:var(--coral-soft);color:var(--coral);"><b>不如</b><span class="fjp">bat1jyu4</span> <i>(how about)</i> + Subject + <b>一齊</b><span class="fjp">jat1cai4</span> <i>(together)</i> + Verb + Object</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--coral);">Pattern 12</span>
+      <span class="ptag" style="color:var(--coral);">PREFERENCE — LIKE DOING</span>
+      <div class="zh-big zh">我鍾意做瑜伽。</div>
+      <span class="jp">ngo5 zung1 ji3 zou6 jyu4 gaa1.</span>
+      <div class="en">I like doing yoga.</div>
+      <span class="p-formula" style="background:var(--coral-soft);color:var(--coral);">Subject + <b>鍾意</b><span class="fjp">zung1ji3</span> <i>(like to)</i> + Verb + Object</span>
+    </div>
+    <div class="pattern-card">
+      <span class="pnum" style="background:var(--coral);">Pattern 13</span>
+      <span class="ptag" style="color:var(--coral);">STRONG DISLIKE — HATE DOING</span>
+      <div class="zh-big zh">我好憎食榴槤。</div>
+      <span class="jp">ngo5 hou2 zang1 sik6 lau4 lin4.</span>
+      <div class="en">I really hate eating durian.</div>
+      <span class="p-formula" style="background:var(--coral-soft);color:var(--coral);">Subject + <b>好憎</b><span class="fjp">hou2zang1</span> <i>(really hate)</i> + Verb + Object</span>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section id="quiz-section">
+    <span class="kicker" style="background:var(--coral-soft);color:var(--coral);">Practice</span>
+    <h2>Which pattern is it? 🎯</h2>
+    <p class="section-sub">Eight quick questions covering all 13 patterns above. Tap an answer for instant feedback. 加油 (gaa1 jau4)!</p>
+    <div id="quiz"></div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 0 answered</div>
+    <div class="final-msg" id="finalMsg">
+      <div class="big" id="finalScore"></div>
+      <div id="finalWords" style="margin-top:6px;font-size:17px;"></div>
+      <button class="reset-btn" onclick="resetQuiz()">🔄 Try again</button>
+    </div>
+
+    <div class="unlock-wrap" id="unlockWrap">
+      <div class="unlock-card">
+        <div class="big">🎁 You did it!</div>
+        <p>Grab the printable PDF of all 13 patterns — perfect for keeping by your desk or reviewing offline.</p>
+        <a class="dl-btn" href="13-must-know-cantonese-patterns.pdf" download>Download the free PDF <span class="dl-arrow">↓</span></a>
+      </div>
+    </div>
+
+    <p class="locked-hint" id="lockedHint">🔒 Finish the quiz above to unlock <b>the free PDF download</b> of all 13 patterns.</p>
+  </section>
+
+  <footer>
+    <div class="zh">一個動詞，十三種用法！</div>
+    <p style="margin-top:6px;">Come back and reread these patterns any time you catch yourself memorizing words in isolation 💪</p>
+    <p class="brand-line">made with ❤️ by <span class="canto">canto</span><span class="bestie">bestie</span></p>
+  </footer>
+
+</div>
+
+<script>
+  var QUESTIONS = [
+    {
+      q:'我做緊功課。 (ngo5 zou6 gan2 gung1 fo3.) — what does 緊 (gan2) mark here?',
+      opts:['A completed action ("did homework")','An ongoing action ("doing homework right now")','A plan for the future'],
+      correct:1,
+      why:'Verb + 緊 (gan2) marks an action in progress — "I\'m doing my homework."'
+    },
+    {
+      q:'Which pattern says you CAN\'T do something, due to a real obstacle (like being tired)?',
+      opts:['做得到 (zou6 dak1 dou2)','做唔到 (zou6 m4 dou2)','唔會做 (m4 wui5 zou6)'],
+      correct:1,
+      why:'Verb + 唔到 (m4dou2) = "can\'t (achieve the result)" — 今日太攰喇，我做唔到 (gam1 jat6 taai3 gui6 laa3, ngo5 zou6 m4 dou2.) = "I\'m too tired, I can\'t do it."'
+    },
+    {
+      q:'我打算做老師。 (ngo5 daa2 syun3 zou6 lou5 si1.) means:',
+      opts:['I am a teacher','I plan to become a teacher','I like teachers'],
+      correct:1,
+      why:'打算 (daa2syun3) = "plan to" — it introduces an intention, not a current fact.'
+    },
+    {
+      q:'Fill in the blank: 呢件事我___要做。 (ni1 gin6 si6 ngo5 ___ jiu3 zou6.) ("I definitely have to do this.")',
+      opts:['一定 (jat1 ding6)','打算 (daa2 syun3)','鍾意 (zung1 ji3)'],
+      correct:0,
+      why:'一定要 (jat1ding6 jiu3) = "definitely have to" — stronger and more absolute than plain 要 (jiu3).'
+    },
+    {
+      q:'不如我哋一齊做運動？ (bat1 jyu4 ngo5 dei6 jat1 cai4 zou6 wan6 dung6?) is best translated as:',
+      opts:['We must exercise together.','How about we exercise together?','We never exercise together.'],
+      correct:1,
+      why:'不如…一齊… (bat1jyu4…jat1cai4…) is a soft suggestion/invitation — "How about we... together?"'
+    },
+    {
+      q:'What\'s the difference between 鍾意 (zung1 ji3) and 好憎 (hou2 zang1) in these patterns?',
+      opts:['They mean the same thing','鍾意 (zung1ji3) = like, 好憎 (hou2zang1) = really hate — opposite feelings, same sentence slot','鍾意 (zung1ji3) is for people, 好憎 (hou2zang1) is for food only'],
+      correct:1,
+      why:'Both sit in the same Subject + [feeling word] + Verb + Object slot, but express opposite feelings.'
+    },
+    {
+      q:'我會做 gym。 (ngo5 wui5 zou6 gym1.) — here 會 (wui5) means:',
+      opts:['Will (future tense)','Must','A question'],
+      correct:0,
+      why:'會 (wui5) + Verb here signals future tense — "I will hit the gym."'
+    },
+    {
+      q:'聽日我要做身體檢查。 (ting1 jat6 ngo5 jiu3 zou6 san1 tai2 gim2 caa4.) — where does the time word 聽日 (ting1 jat6) go?',
+      opts:['Right before the verb, at the very end of the sentence','At the very start of the sentence','It can\'t be used with 要 (jiu3)'],
+      correct:1,
+      why:'Time + Subject + 要 (jiu3) + Verb + Object — the time word opens the sentence.'
+    }
+  ];
+
+  var answered = 0, score = 0;
+  var quizEl = document.getElementById('quiz');
+
+  function buildQuiz(){
+    answered = 0; score = 0;
+    quizEl.innerHTML = '';
+    QUESTIONS.forEach(function(item, qi){
+      var card = document.createElement('div');
+      card.className = 'quiz-card';
+      var optsHtml = item.opts.map(function(o, oi){
+        return '<button class="opt zh" data-q="'+qi+'" data-o="'+oi+'">'+o+'</button>';
+      }).join('');
+      card.innerHTML =
+        '<span class="qnum">Question '+(qi+1)+' of '+QUESTIONS.length+'</span>' +
+        '<div class="qtext">'+item.q+'</div>' +
+        '<div class="opts">'+optsHtml+'</div>' +
+        '<div class="feedback" id="fb-'+qi+'"></div>';
+      quizEl.appendChild(card);
+    });
+    quizEl.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click', onAnswer);
+    });
+    updateScore();
+    document.getElementById('finalMsg').classList.remove('show');
+    document.getElementById('unlockWrap').classList.remove('show');
+    document.getElementById('lockedHint').style.display = 'block';
+  }
+
+  function onAnswer(e){
+    var btn = e.currentTarget;
+    var qi = +btn.dataset.q, oi = +btn.dataset.o;
+    var item = QUESTIONS[qi];
+    var card = btn.closest('.quiz-card');
+    var buttons = card.querySelectorAll('.opt');
+    buttons.forEach(function(b){ b.disabled = true; });
+    var fb = document.getElementById('fb-'+qi);
+    if(oi === item.correct){
+      btn.classList.add('correct');
+      score++;
+      fb.className = 'feedback good show';
+      fb.innerHTML = '✅ <b>啱喇! (ngaam1 laa3!) Correct!</b> ' + item.why;
+    } else {
+      btn.classList.add('wrong');
+      buttons[item.correct].classList.add('correct');
+      fb.className = 'feedback bad show';
+      fb.innerHTML = '❌ <b>Not quite!</b> ' + item.why;
+    }
+    answered++;
+    updateScore();
+    if(answered === QUESTIONS.length) showFinal();
+  }
+
+  function updateScore(){
+    document.getElementById('scoreBar').textContent =
+      'Score: ' + score + ' / ' + answered + ' answered';
+  }
+
+  function showFinal(){
+    var msg = document.getElementById('finalMsg');
+    document.getElementById('finalScore').textContent = score + ' / ' + QUESTIONS.length;
+    var words;
+    if(score === QUESTIONS.length){ words = '🏆 好犀利呀! (hou2 sai1 lei6 aa3!) Perfect score!'; }
+    else if(score >= 6){ words = '🎉 好叻呀! (hou2 lek1 aa3!) Great job — just review the ones you missed.'; }
+    else if(score >= 4){ words = '💪 唔錯! (m4 co3!) Good start — reread the patterns and try once more!'; }
+    else { words = '📖 唔緊要! (m4 gan2 jiu3!) No worries — review the patterns above, then try again!'; }
+    document.getElementById('finalWords').textContent = words;
+    msg.classList.add('show');
+
+    // unlock the PDF download regardless of score — completing the quiz is the goal
+    document.getElementById('unlockWrap').classList.add('show');
+    document.getElementById('lockedHint').style.display = 'none';
+    msg.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function resetQuiz(){
+    buildQuiz();
+    document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
+  }
+
+  buildQuiz();
+</script>
+</body>
+</html>
